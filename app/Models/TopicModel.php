@@ -265,17 +265,22 @@ class TopicModel extends Model
 
     public function getTopiceWebsite()
     {
-        $this->select('
-         int_saksiam_topic.int_saksiam_topic_id As topicID,
-            int_saksiam_topic.int_saksiam_topic_nameTH As topic_nameTH,
-            int_saksiam_topic.int_saksiam_topic_nameEN As topic_nameEN,
-            int_saksiam_topic.int_saksiam_topic_order As topicorder,
+        return $this->getTopicWebsite();
+    }
+
+    public function getTopicWebsite()
+    {
+        return $this->select('
+            int_saksiam_topic.int_saksiam_topic_id AS id,
+            int_saksiam_topic.int_saksiam_topic_nameTH AS name,
+            int_saksiam_topic.int_saksiam_topic_nameTH AS nameTH,
+            int_saksiam_topic.int_saksiam_topic_nameEN AS nameEN,
+            int_saksiam_topic.int_saksiam_topic_active AS active,
+            int_saksiam_topic.int_saksiam_topic_order AS topicorder
         ')
-            ->where('int_saksiam_topic_active', 1)
-            ->groupBy('int_saksiam_topic_id,  int_saksiam_topic_order')
             ->orderBy('int_saksiam_topic_order', 'ASC')
-            ->orderBy('int_saksiam_topic_id', 'ASC');
-        return $this->findAll();
+            ->orderBy('int_saksiam_topic_id', 'ASC')
+            ->findAll();
     }
     // <--End Web sak -->
 

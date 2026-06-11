@@ -130,13 +130,19 @@ class FaqTypeModel extends Model
     public function showFaqType($id = null)
     {
         $this->select('
+            int_saksiam_typefqa_id AS id,
             int_saksiam_typefqa_id AS faqtypeID,
+            int_saksiam_typefqa_id AS typefaqID,
+            int_saksiam_typefqa_nameTH AS nameTH,
+            int_saksiam_typefqa_nameEN AS nameEN,
             int_saksiam_typefqa_nameTH AS faqtypenameTH,
             int_saksiam_typefqa_nameEN AS faqtypenameEN,
-            int_saksiam_typefqa_active AS faqtypeactive,
+            int_saksiam_typefqa_active AS active,
+            int_saksiam_typefqa_savename AS savename,
+            int_saksiam_typefqa_createAt AS createAt,
+            int_saksiam_typefqa_updateAt AS updateAt,
             int_saksiam_typefqa_order AS faqtypeorder,
-            int_saksiam_typefqa_createAt AS faqtypecreateAt,
-            int_saksiam_typefqa_updateAt AS faqtypeupdateAt
+            int_saksiam_typefqa_order AS typefaqorder
         ');
 
         if ($id !== null) {

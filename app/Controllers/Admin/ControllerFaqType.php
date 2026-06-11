@@ -236,6 +236,48 @@ class ControllerFaqType extends Controller
     }
 
     /* ======================================================
+        DELETE
+    ====================================================== */
+    public function deleteFaqTypeData($id = null)
+    {
+        if (is_null($id)) {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'FAQ Type ID is required'
+            ])->setStatusCode(400);
+        }
+
+        try {
+            $existing = $this->FaqType->find($id);
+
+            if (!$existing) {
+                return $this->response->setJSON([
+                    'status' => false,
+                    'message' => 'Data not found'
+                ])->setStatusCode(404);
+            }
+
+            $deleted = $this->FaqType->delete($id);
+
+            if (!$deleted) {
+                return $this->response->setJSON([
+                    'status' => false,
+                    'message' => 'Delete failed'
+                ])->setStatusCode(500);
+            }
+
+            return $this->response->setJSON([
+                'status' => true,
+                'message' => 'Deleted successfully'
+            ]);
+        } catch (\Exception $e) {
+            return $this->response->setJSON([
+                'error' => $e->getMessage()
+            ])->setStatusCode(500);
+        }
+    }
+
+    /* ======================================================
         MOVE ORDER
     ====================================================== */
     public function updateFaqTypeMove()

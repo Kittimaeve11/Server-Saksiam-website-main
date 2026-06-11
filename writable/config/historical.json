@@ -1,0 +1,102 @@
+{
+   
+    "hero" : {
+        "subheadline_th": "เพราะเราเชื่อว่าสินเชื่อที่ดี คือพลังสร้างรากฐาน สร้างงาน และสร้างคน",
+        "subheadline_en": "Because We Believe That Responsible Lending Builds Foundations, Creates Opportunities, and Empowers People."
+    },
+
+    "philosophy" : {
+        "title_th": "ปณิธาณของอาจารย์ที่หล่อหลอมพนักงานเสมอมาคือ",
+        "title_en": "The Guiding Principle Our Teacher Has Always Instilled in Every Employee Is:",
+
+        "quote_th": "จงศรัทธาและรักใคร่ จงเชื่อใจและผูกพัน จงอดทนและมุ่งมั่น จะสร้างฝันให้เป็นจริง",
+        "quote_en": "Have Faith and Compassion, Build Trust and Commitment, Persevere with Determination, and Turn Dreams into Reality.",
+
+        "description_th": "ท่านสร้างชีวิตให้พนักงานด้วยการสอน และให้ปฏิบัติอย่่างแท้จริง",
+        "description_en": "He Transformed the Lives of Employees Through Genuine Teaching and Leading by Example."
+    },
+    "introduction" : {
+        "description_th": "ท่ามกลางการเปลี่ยนแปลงของระบบเศรษฐกิจไทยในช่วงพุทธศักราช 2520–2530 เป็นยุคแห่งการขยายตัวของธุรกิจการเงิน การขายตรง และการเข้าถึงแหล่งทุนของประชาชนระดับภูมิภาคได้ก่อให้เกิด ผู้ประกอบการรุ่นบุกเบิกจำนวนไม่น้อยที่เริ่มต้น จากจุดเล็ก  ๆ  ด้วยความมุ่งมั่นและวิสัยทัศน์อันชัดเจน   หนึ่งในนั้นคือ การก่อร่างสร้างรากฐานขององค์กรที่เติบโตจาก “ความเป็นครู” สู่ “สถาบันทางการเงินในระดับมหาชน” อย่างมั่นคง",
+        "description_en": "Amid the transformation of Thailand’s economic landscape during the 1977–1987 period, the nation witnessed a significant expansion in financial services, direct sales businesses, and access to funding opportunities for people in regional areas. This era gave rise to a new generation of pioneering entrepreneurs who began from humble beginnings, driven by determination and a clear vision. Among them was the establishment of an organization that steadily evolved from the spirit of ‘being a teacher’ into a publicly listed financial institution built on stability and enduring values."
+    },
+    "eras": [
+        {
+            "era_th": "ยุคเข้าสู่มหาชน",
+            "era_en": "The Public Company Era",
+            "sections": [
+                {
+                    "title_th" : "บริษัท ศักดิ์สยามลิสซิ่ง จำกัด (มหาชน)",
+                    "title_en" : "Saksiam Leasing Public Company Limited",
+                    "description_th" : "จากความตั้งใจของอาจารย์ทั้ง 2 ท่าน ในการสร้างงาน สร้างคนมากกว่า 25 ปี บัดนี้บริษัทได้สร้างรากฐานที่มั่นคงไว้ให้พนักงานแล้วและสั่งสอน พนักงานทุกคนให้สร้างตนภายใต้เศรษฐกิจพอเพียง ที่มีภูมิคุ้มกันอย่าง เป็นรูปธรรมและมีวัฒนธรรมอันดีงามขององค์การเป็นกรอบปฏิบัติตนเสมอมา จนถึงปัจจุบันบริษัท มีสาขาเปิดให้บริการกว่า 1,079 สาขา ทั่วภาคเหนือ ภาคกลาง และภาคตะวันออกเฉียงเหนือ มีพนักงานจำนวน กว่า 2,700 คน การจ้างงานล้วนแล้วแต่เป็นพนักงานในท้องถิ่นทั้งสิ้น และบริษัทได้จดทะเบียนเปลี่ยนชื่อเป็น บริษัท ศักดิ์สยามลิสซิ่ง จำกัด (มหาชน) เมื่อวันที่ 20 มิถุนายน 2559",
+                    "description_en" : "Through the dedication of both founders in creating opportunities and developing people for more than 25 years, the Company has established a strong and sustainable foundation for its employees. They have continuously instilled in every employee the principles of self-development based on the Sufficiency Economy Philosophy, emphasizing resilience, practicality, and adherence to the organization’s strong cultural values as a guiding framework for conduct.Today, the Company operates more than 1,079 branches across Northern, Central, and Northeastern Thailand, employing over 2,700 staff members, all of whom are locally recruited. The Company was officially registered under the name Saksiam Leasing Public Company Limited on June 20, 2016.",
+                    "images":  "\/History\/pic-star7.jpg"
+                }
+            ]
+        },
+        {
+            "era_th": "ยุคเปลี่ยนแปลง",
+            "era_en": "The Era of Transformation",
+            "sections":[
+                {
+                    "title_th" : "เป็นบริษัทจำกัด",
+                    "title_en" : "Transition to a Limited Company",
+                    "description_th" : "จนกระทั่งธุรกิจขายตรงเริ่มซบเซา วิญญาณของความเป็นครูที่ไม่เคยคิด ทอดทิ้งเหล่าพนักงานที่ร่วมกันสร้างบริษัทขึ้นมา จึงมองหางานใหม่ ที่สามารถรองรับพนักงาน ซึ่งในขณะนั้นมีพนักงานกว่า 50 คน ถ้าไม่คิดหางานใหม่พนักงานเหล่านี้จะไม่มีงานทำ จึงได้พบว่างานลิสซิ่ง เป็นงานที่สามารถนำมาศึกษาเรียนรู้ได้ลองผิดลองถูกหาวิธีทำธุรกิจนี้เพราะอาจารย์ทั้งสองไม่มีพื้นฐานงานในด้านธุรกิจแต่อาศัยความเป็นครูอดทนสอน และฝึกฝนพนักงานแม้จะอายุมากแล้ว ท่านทั้งสองก็เพียร เรียนต่อปริญญาโททางการตลาด และการบริหารจัดการ จนก่อเกิดเป็น ความรู้ขึ้นมา กระทั่งมีความมั่นใจในงานใหม่จึงปรับเปลี่ยนพนักงานให้มา ศึกษาเรียนรู้งานการให้สินเชื่อ",
+                    "description_en" : "As the direct sales business gradually declined, the founders’ enduring spirit as educators never allowed them to abandon the employees who had helped build the company together. At that time, the organization employed more than 50 staff members, and without finding a new direction, many of them would have been left without work.Determined to protect their employees’ livelihoods, the founders began searching for a new business opportunity and discovered the leasing industry, a field they believed could be learned through dedication, perseverance, and practical experience. Although neither of them had a formal background in business, they relied on their strength as teachers — patiently guiding, training, and developing their employees.Even at an advanced age, both founders continued to pursue higher education, earning master’s degrees in Marketing and Management to build the knowledge and confidence required for the new venture. Once they had gained confidence in the leasing business, they began transforming and training their employees to learn and adapt to the field of lending and financial services.",
+                    "images":  "\/History\/pic-star4.jpg"
+                },
+                {
+                    "title_th": "บริษัท ศักดิ์สยามพาณิชลิสซิ่ง จำกัด",
+                    "title_en": "Saksiam Panich Leasing Co., Ltd.",
+                    "description_th": "ในวันที่ 26 กันยายน 2536 ได้เปลี่ยนชื่อจาก “สำนักงานเครดิต อุตรดิตถ์” เป็น “บริษัท ศักดิ์สยามพาณิชลิสซิ่ง จำกัด” จาก 1 สาขา ที่ทดลองเปิดในตอนแรก เริ่มสอนงานและขยายสาขาเพิ่มขึ้นอย่างต่อเนื่อง เพื่อรองรับพนักงานจากงานเดิมให้มีงานทำทุกคน",
+                    "description_en": "On September 26, 1993, the Company officially changed its name from ‘Uttaradit Credit Office’ to ‘Saksiam Panich Leasing Co., Ltd.’ Beginning with a single pilot branch, the Company gradually expanded its operations while continuously training and developing its employees, with the commitment to ensure that every staff member from the previous business would continue to have stable employment.",
+                     "images":  "\/History\/pic-star5.jpg"
+                }
+
+            ]
+         },
+         {
+            "era_th": "ยุคเริ่มธุรกิจ",
+            "era_en": "The Beginning of the Business Era",
+            "sections":[
+                {
+                    "title_th" : "จากงาน “เครดิต”",
+                    "title_en" : "From the Credit Business",
+                    "description_th" : "ปี พ.ศ.2529 บริษัทโกลด์เวลล์ซึ่งเป็นบริษัทขายสินค้าขายตรง เข้ามาใน จังหวัดอุตรดิตถ์ และบริษัทโกลด์เวลล์ต้องการหาตัวแทนในการติดตาม รับชำระเงินค่างวดจากผู้ซื้อสินค้า ซึ่งได้มาทำความรู้จักกับอาจารย์จินตนา และได้ตกลงทำธุรกิจร่วมกัน เรียกงานนั้นว่า งานเครดิต",
+                    "description_en" : "In 1986, Goldwell, a direct sales company, entered Uttaradit Province and sought a representative to oversee installment payment collections from customers who purchased its products. During that time, the company became acquainted with Ajarn Jintana, and both parties agreed to collaborate in this business venture. The work was then known as the ‘Credit Business.’"
+
+                },
+                {
+                    "title_th" : "งานเครดิต",
+                    "title_en" : "The Credit Business",
+                    "description_th" : "งานดังกล่าวได้ใช้บ้านพักในวิทยาลัยครูเป็นที่ประสานงานสินทรัพย์ต่างๆ มีแต่สิ่งของเครื่องใช้ที่จำเป็นต่อการทำงานเท่านั้น อาจารย์ทั้งสอง ต้องมี งานเพิ่มขึ้นทั้งงานในส่วนของราชการที่ต้องสอนหนังสือตั้ง แต่เวลา8.00 - 16.00 น. และต้องสอนภาคค่ำพร้อมกับต้องดูแลงาน ที่สร้างสรรค์ขึ้น จุดเริ่มต้นมีพนักงานเพียง 1 คนที่สนใจทำงาน ดังกล่าว กลับกลายเป็น แหล่งที่ นักศึกษาจบใหม่ สนใจเข้าร่วมการทำงานจนบ้านพักอาจารย์ ไม่สามารถใช้เป็นที่ประสานงานได้อีก อาจารย์ทั้งสองจึงหาที่ทำงานใหม่ คือที่ทาวเฮาส์ชุมชนคอวัง",
+                    "description_en" : "The operation initially used the lecturers’ residence within the Teachers College as its coordination center, furnished only with the essential equipment required for daily work. During this period, both lecturers carried an increasing workload, balancing their responsibilities as government educators teaching from 8:00 a.m. to 4:00 p.m., conducting evening classes, and simultaneously managing the business they had established.What began with only one employee interested in joining the work gradually evolved into an opportunity that attracted many newly graduated students seeking employment. Eventually, the lecturers’ residence could no longer accommodate the growing operations as a coordination center. As a result, the two founders relocated the office to a townhouse in the Khor Wang community.",
+                     "images":  "\/History\/pic-star3.jpg"
+                },
+                {
+                    "title_th" : "สำนักงานเครดิตอุตรดิตถ์",
+                    "title_en" : "Uttaradit Credit Office",
+                    "description_th" : "งานธุรกิจขายตรงมีความเจริญก้าวหน้าขึ้นเรื่อยๆ ทาวเฮาส์ชุมชนคอวัง จึงคับแคบลงอีกครั้งด้วยจำนวนพนักงานที่เพิ่มขึ้น อาจารย์ทั้งสองท่าน จึงต้องหาที่ทำการใหม่อีกครั้ง โดยย้ายมาที่ทาวเฮาท์ ถ.ศรีอุตรานอก ด้วยวิสัยทัศน์การบริหารที่มองไปข้างหน้าตลอดเวลา อาจารย์ทั้งสอง จึงตัดสินใจสร้างตึกของบริษัทเอง เพื่อเป็นที่ทำงานอันมั่นคงเป็นขวัญ และกำลังใจให้กับพนักงาน โดยใช้ชื่อว่า “สำนักงานเครดิตอุตรดิตถ์”",
+                    "description_en" : "As the direct sales business continued to grow and prosper, the townhouse in the Khor Wang community once again became insufficient to accommodate the increasing number of employees. Consequently, the two founders sought a new office location and relocated the operations to a townhouse on Sri Uttra Nok Road. With their forward-looking vision in management and long-term commitment to organizational stability, the founders ultimately decided to construct the Company’s own office building. The purpose was to establish a permanent workplace that would serve as both a source of security and encouragement for all employees. The office was established under the name ‘Uttaradit Credit Office.’",
+                    "images":  "\/History\/pic-star2.jpg"
+                }
+            ]
+         },
+         {
+            "era_th": "ยุคเริ่มก่อตั้ง",
+            "era_en": "The Founding Era",
+            "sections":[
+                {
+                    "title_th" : "รากฐาน ความเป็นมา",
+                    "title_en" : "Foundations and Origins",
+                    "description_th" : "บริษัท ศักดิ์สยามลิสซิ่ง จำกัด (มหาชน) ก่อตั้งโดย ผศ.ดร.พูนศักดิ์ และ อ.จินตนา บุญสาลี โดยช่วงแรกของการเริ่มต้นธุรกิจนั้น ยังมิได้ทำ ธุรกิจเช่นในปัจจุบัน แต่เริ่มต้นธุรกิจจากความขยันหมั่นเพียรและความ อดทนของ อ.จินตนา บุญสาลี ที่ต้องหาอาชีพเสริมให้กับครอบครัว ประกอบกับ ผศ.ดร.พูนศักดิ์ บุญสาลี ต้องการสร้างงานให้กับนักศึกษา ของวิทยาลัยครู(มหาวิทยาลัยราชภัฏอุตรดิตถ์ในปัจจุบัน) หลังจากจบการศึกษา ให้มีวิธีคิดงานทางธุรกิจ ไม่ใช่รอแต่งานราชการ อาจารย์ทั้งสองท่านจึงหาช่องทางที่จะทำให้วัตถุประสงค์ทั้งสองอย่าง สามารถดำเนินการควบคู่กันได้",
+                    "description_en" : "Saksiam Leasing Public Company Limited was founded by Assistant Professor Mr. Phoonsak Boonsalee and Mrs. Jintana Boonsalee. In its early beginnings, the business was not yet engaged in the operations it conducts today. Instead, it originated from the diligence, perseverance, and determination of Ajarn Jintana Boonsalee, who sought additional income opportunities to support the family. At the same time, Assistant Professor Dr. Poonsak Boonsalee aspired to create employment opportunities for graduates of the Teachers College (now Uttaradit Rajabhat University), encouraging them to develop entrepreneurial thinking rather than relying solely on government employment after graduation. With these shared aspirations, both founders sought a path that would enable them to pursue these two objectives simultaneously.",
+                    "images":  "\/History\/pic-star.jpg"
+                }
+            ]
+         }
+
+
+    ]
+
+    
+}

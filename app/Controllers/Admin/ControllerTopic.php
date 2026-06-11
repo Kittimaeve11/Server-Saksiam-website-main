@@ -19,15 +19,12 @@ class ControllerTopic extends BaseController
     public function showTopicdetaillist()
     {
         $showdata = $this->topic->getTopicShow();
-        if ($showdata) {
-            return $this->response->setJSON([
-                'status' => true,
-                'message' => 'Data Topic retrieved successfully',
-                'result' => $showdata
-            ]);
-        } else {
-            return $this->response->setJSON(0);
-        }
+        return $this->response->setJSON([
+            'status' => true,
+            'message' => 'Data Topic retrieved successfully',
+            'result' => $showdata,
+            'data' => $showdata,
+        ]);
     }
 
     public function showTopicData()
@@ -273,5 +270,15 @@ class ControllerTopic extends BaseController
             'status' => true,
             'message' => 'List Vedio order updated successfully'
         ])->setStatusCode(200);
+    }
+
+    public function listgetTopiceData()
+    {
+        $showdata = $this->topic->getTopicWebsite();
+        return $this->response->setJSON([
+            'status' => true,
+            'message' => 'Data topic retrieved successfully',
+            'data' => $showdata,
+        ]);
     }
 }

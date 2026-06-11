@@ -3,285 +3,190 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Controller;
-use App\Models\ContactModel;
 
 class ControlleContact extends BaseController
 {
-    protected $ContactModel;
+ protected $jsonPath;
 
     public function __construct()
     {
-        $this->contact = new ContactModel();
+        $this->jsonPath = WRITEPATH . 'config/contact.json';
     }
 
-     public function createdataContactAPI()
+    // =========================
+    // GET CONTACT
+    // =========================
+     public function index()
     {
-        $addressTH = $this->request->getVar('addressTH');
-        $addressEN = $this->request->getVar('addressEN');
-        $officehoursTH = $this->request->getVar('officehoursTH');
-        $officehoursEN = $this->request->getVar('officehoursEN');
-        $phonenumber = $this->request->getVar('phone');
-        $callcenter = $this->request->getVar('callcenter');
-        $fax = $this->request->getVar('fax');
-        $email = $this->request->getVar('email');
-        $subemail = $this->request->getVar('subemail');
-        $googlemap = $this->request->getVar('map');
-        $facbook = $this->request->getVar('facbook');
-        $line = $this->request->getVar('line');
-        $instagram = $this->request->getVar('instagram');
-        $youtube = $this->request->getVar('youtube');
-        $tikkok = $this->request->getVar('tikkok');
-        $savename = $this->request->getVar('savename');
-        $locationPhoto = $this->request->getFile('locationPhoto');
-
-        $allowedTypes = ['jpg', 'jpeg'];
-        $fileExtensionLocationPhoto = $locationPhoto->getExtension();
-
-        if (!in_array($fileExtensionLocationPhoto, $allowedTypes)) {
+        if (!file_exists($this->jsonPath)) {
             return $this->response->setJSON([
                 'status' => false,
-                'message' => 'Invalid file type. Only JPG and JPEG are allowed.'
-            ])->setStatusCode(400);
-        }
-
-
-        $uploadDirLocationPhoto = WRITEPATH . '../public/locationPhoto/';
-        if (!is_dir($uploadDirLocationPhoto)) {
-            mkdir($uploadDirLocationPhoto, 0777, true);
-        }
-
-        $fileHashlocationPhoto = md5_file($locationPhoto->getTempName());
-
-        $existingFileslocationPhoto = scandir($uploadDirLocationPhoto);
-
-        foreach ($existingFileslocationPhoto as $file) {
-            if ($file !== '.' && $file !== '..') {
-                if (md5_file($uploadDirLocationPhoto . $file) === $fileHashlocationPhoto) {
-                    return $this->response->setJSON([
-                        'status' => false,
-                        'message' => 'มีรูปที่ชื่อนี้อยู่ในระบบแล้ว!'
-                    ])->setStatusCode(400);
-                }
-            }
-        }
-
-        $newFileLocationPhoto = uniqid('LocationPhoto') . '.' . $fileExtensionLocationPhoto;
-
-        try {
-            $locationPhoto->move($uploadDirLocationPhoto, $newFileLocationPhoto);
-        } catch (\Exception $e) {
-            return $this->response->setJSON([
-                'status' => false,
-                'message' => 'Failed to save file: ' . $e->getMessage()
-            ])->setStatusCode(500);
-        }
-
-        $data = [
-            'int_saksiam_contact_addressTH' => $addressTH,
-            'int_saksiam_contact_addressEN' => $addressEN,
-            'int_saksiam_contact_officehoursTH' => $officehoursTH,
-            'int_saksiam_contact_officehoursEN' => $officehoursEN,
-            'int_saksiam_contact_phonenumber' => $phonenumber,
-            'int_saksiam_contact_callcenter' => $callcenter,
-            'int_saksiam_contact_fax' => $fax,
-            'int_saksiam_contact_emailmain' => $email,
-            'int_saksiam_contact_emailsub' => $subemail,
-            'int_saksiam_contact_googlemap' => $googlemap,
-            'int_saksiam_contact_Facbook' => $facbook,
-            'int_saksiam_contact_line' => $line,
-            'int_saksiam_contact_IG' => $instagram,
-            'int_saksiam_contact_youtube' => $youtube,
-            'int_saksiam_contact_tikkok' => $tikkok,
-            'int_saksiam_contact_savename' => $savename,
-            'int_saksiam_contact_locationphoto' => 'LocationPhoto/' . $newFileLocationPhoto
-        ];
-
-        try {
-            $contactID = $this->contact->createContactDATA($data);
-            $data['int_saksiam_contact_id'] = $contactID;
-
-            return $this->response->setJSON([
-                'status' => true,
-                'message' => 'contact data created successfully',
-                'data' => $data
+                'message' => 'contact.json not found'
             ]);
-        } catch (\Exception $e) {
-            return $this->response->setJSON([
-                'status' => false,
-                'message' => 'Failed to save data: ' . $e->getMessage()
-            ])->setStatusCode(500);
         }
+
+        $json = file_get_contents($this->jsonPath);
+        $data = json_decode($json, true);
+
+        return $this->response->setJSON([
+            'status' => true,
+            'data' => $data
+        ]);
     }
 
-     public function showContactDaTaID($contactID = null)
-    {
-        try {
-            $contactData = $this->contact->showContactIDData($contactID);
-            return $this->response->setJSON([
-                'status' => 200,
-                'data' => $contactData,
-            ]);
-        } catch (\Exception $e) {
-            return $this->response->setJSON(['error' => $e->getMessage()])
-                ->setStatusCode(500);
-        }
+    // =========================
+    // UPDATE CONTACT
+    // =========================
+ public function update()
+{
+    helper(['filesystem']);
+
+    // =========================
+    // READ OLD JSON
+    // =========================
+
+    $oldData = [];
+
+    if (file_exists($this->jsonPath)) {
+        $oldJson = file_get_contents($this->jsonPath);
+        $oldData = json_decode($oldJson, true);
     }
 
-     public function updateContactData($contactID = null)
-    {
-        if (is_null($contactID)) {
-            return $this->response->setJSON([
-                'status' => false,
-                'message' => 'contact ID is required'
-            ])->setStatusCode(400);
-        }
-        ;
-        $existingEvent = $this->contact->find($contactID);
-        if (!$existingEvent) {
-            return $this->response->setJSON([
-                'status' => false,
-                'message' => 'contact not found'
-            ])->setStatusCode(404);
-        }
-        $contactDataToUpdate = [];
-        $addressTH = $this->request->getVar('addressTH');
-        $addressEN = $this->request->getVar('addressEN');
-        $officehoursTH = $this->request->getVar('officehoursTH');
-        $officehoursEN = $this->request->getVar('officehoursEN');
-        $phonenumber = $this->request->getVar('phone');
-        $callcenter = $this->request->getVar('callcenter');
-        $taxpayer = $this->request->getVar('taxpayer');
-        $fax = $this->request->getVar('fax');
-        $email = $this->request->getVar('email');
-        $subemail = $this->request->getVar('subemail');
-        $googlemap = $this->request->getVar('map');
-        $facbook = $this->request->getVar('facbook');
-        $line = $this->request->getVar('line');
-        $instagram = $this->request->getVar('instagram');
-        $youtube = $this->request->getVar('youtube');
-        $tikkok = $this->request->getVar('tikkok');
-        $updatename = $this->request->getPost('updatename');
-        $locationPhoto = $this->request->getFile('locationPhoto');
+    // =========================
+    // FORM DATA
+    // =========================
 
-        if ($addressTH !== null) {
-            $contactDataToUpdate['int_saksiam_contact_addressTH'] = $addressTH;
-            $updatename = $updatename ?? 'Default Name';
-        }
+    $request = $this->request->getPost();
 
-        if ($addressEN !== null) {
-            $contactDataToUpdate['int_saksiam_contact_addressEN'] = $addressEN;
-            $updatename = $updatename ?? 'Default Name';
-        }
-        if ($officehoursTH !== null) {
-            $contactDataToUpdate['int_saksiam_contact_officehoursTH'] = $officehoursTH;
-            $updatename = $updatename ?? 'Default Name';
-        }
-        if ($officehoursEN !== null) {
-            $contactDataToUpdate['int_saksiam_contact_officehoursEN'] = $officehoursEN;
-            $updatename = $updatename ?? 'Default Name';
-        }
-
-        if ($phonenumber !== null) {
-            $contactDataToUpdate['int_saksiam_contact_phonenumber'] = $phonenumber;
-            $updatename = $updatename ?? 'Default Name';
-        }
-
-        if ($callcenter !== null) {
-            $contactDataToUpdate['int_saksiam_contact_callcenter'] = $callcenter;
-            $updatename = $updatename ?? 'Default Name';
-        }
-        if ($taxpayer !== null) {
-            $contactDataToUpdate['int_saksiam_contact_taxpayer'] = $taxpayer;
-            $updatename = $updatename ?? 'Default Name';
-        }
-
-        if ($fax !== null) {
-            $contactDataToUpdate['int_saksiam_contact_fax'] = $fax;
-            $updatename = $updatename ?? 'Default Name';
-        }
-
-        if ($email !== null) {
-            $contactDataToUpdate['int_saksiam_contact_emailmain'] = $email;
-            $updatename = $updatename ?? 'Default Name';
-        }
-
-        if ($subemail !== null) {
-            $contactDataToUpdate['int_saksiam_contact_emailsub'] = $subemail;
-            $updatename = $updatename ?? 'Default Name';
-        }
-
-        if ($googlemap !== null) {
-            $contactDataToUpdate['int_saksiam_contact_googlemap'] = $googlemap;
-            $updatename = $updatename ?? 'Default Name';
-        }
-
-        if ($facbook !== null) {
-            $contactDataToUpdate['int_saksiam_contact_Facbook'] = $facbook;
-            $updatename = $updatename ?? 'Default Name';
-        }
-
-        if ($line !== null) {
-            $contactDataToUpdate['int_saksiam_contact_line'] = $line;
-            $updatename = $updatename ?? 'Default Name';
-        }
-
-        if ($instagram !== null) {
-            $contactDataToUpdate['int_saksiam_contact_IG'] = $instagram;
-            $updatename = $updatename ?? 'Default Name';
-        }
-
-        if ($youtube !== null) {
-            $contactDataToUpdate['int_saksiam_contact_youtube'] = $youtube;
-            $updatename = $updatename ?? 'Default Name';
-        }
-
-        if ($tikkok !== null) {
-            $contactDataToUpdate['int_saksiam_contact_tikkok'] = $tikkok;
-            $updatename = $updatename ?? 'Default Name';
-        }
-
-        if ($locationPhoto && $locationPhoto->isValid()) {
-            $allowedTypes = ['jpg', 'jpeg'];
-            $fileExtension = $locationPhoto->getExtension();
-            if (!in_array($fileExtension, $allowedTypes)) {
-                return $this->response->setJSON([
-                    'status' => false,
-                    'message' => 'Invalid file type. Only JPG and JPEG are allowed.'
-                ])->setStatusCode(400);
-            }
-
-            $oldFilePath = WRITEPATH . '../public/' . $existingEvent['int_saksiam_contact_locationphoto'];
-            if (file_exists($oldFilePath)) {
-                unlink($oldFilePath);
-            }
-
-            $newFileName = uniqid('locationPhoto') . '.' . $fileExtension;
-            $locationPhoto->move(WRITEPATH . '../public/locationPhoto/', $newFileName);
-
-            $contactDataToUpdate['int_saksiam_contact_locationphoto'] = 'locationPhoto/' . $newFileName;
-        }
-
-
-        if ($updatename !== null) {
-            $contactDataToUpdate['int_saksiam_contact_updatename'] = $updatename;
-        }
-
-        try {
-            if (!empty($contactDataToUpdate)) {
-                $this->contact->updateContactDATA($contactID, $contactDataToUpdate);
-                return $this->response->setJSON([
-                    'status' => true,
-                    'message' => 'Contact data updated successfully',
-                    'data' => $contactDataToUpdate
-                ])->setStatusCode(200);
-            }
-        } catch (\Exception $e) {
-            return $this->response->setJSON([
-                'status' => false,
-                'message' => 'Failed to update data: ' . $e->getMessage()
-            ])->setStatusCode(400);
-        }
+    if (!$request) {
+        $request = $oldData;
     }
+
+    // =========================
+    // IMAGES DEFAULT
+    // =========================
+
+    if (!isset($request['images'])) {
+        $request['images'] = $oldData['images'] ?? [];
+    }
+
+    // =========================
+    // UPLOAD FOLDER
+    // =========================
+
+    $folder = FCPATH . 'Contact/';
+
+    if (!is_dir($folder)) {
+        mkdir($folder, 0777, true);
+    }
+
+    // =========================
+    // COVER
+    // =========================
+
+    $coverFile = $this->request->getFile('cover');
+
+    if ($coverFile && $coverFile->isValid()) {
+
+        // ลบไฟล์เก่า
+        if (
+            isset($oldData['images']['cover']) &&
+            file_exists(FCPATH . $oldData['images']['cover'])
+        ) {
+            unlink(FCPATH . $oldData['images']['cover']);
+        }
+
+        $newName = $coverFile->getRandomName();
+
+        $coverFile->move($folder, $newName);
+
+        $request['images']['cover'] =
+            '/Contact/' . $newName;
+    }
+
+    // =========================
+    // QR LINE
+    // =========================
+
+    $qrFile = $this->request->getFile('qr_line');
+
+    if ($qrFile && $qrFile->isValid()) {
+
+        if (
+            isset($oldData['images']['qr_line']) &&
+            file_exists(FCPATH . $oldData['images']['qr_line'])
+        ) {
+            unlink(FCPATH . $oldData['images']['qr_line']);
+        }
+
+        $newName = $qrFile->getRandomName();
+
+        $qrFile->move($folder, $newName);
+
+        $request['images']['qr_line'] =
+            '/Contact/' . $newName;
+    }
+
+    // =========================
+    // PDF
+    // =========================
+
+   $pdfFile = $this->request->getFile('regiter');
+
+if ($pdfFile && $pdfFile->isValid()) {
+
+    $allowedMimeTypes = [
+        'application/pdf'
+    ];
+
+    if (
+        !in_array(
+            $pdfFile->getMimeType(),
+            $allowedMimeTypes
+        )
+    ) {
+        return $this->response->setJSON([
+            'status' => false,
+            'message' => 'Only PDF files are allowed'
+        ]);
+    }
+
+    // ลบไฟล์เก่า
+    if (
+        isset($oldData['images']['regiter']) &&
+        file_exists(FCPATH . $oldData['images']['regiter'])
+    ) {
+        unlink(FCPATH . $oldData['images']['regiter']);
+    }
+
+    $newName = $pdfFile->getRandomName();
+
+    $pdfFile->move($folder, $newName);
+
+    $request['images']['regiter'] =
+        '/Contact/' . $newName;
+}
+    // =========================
+    // SAVE JSON
+    // =========================
+
+    $json = json_encode(
+        $request,
+        JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
+    );
+
+    file_put_contents(
+        $this->jsonPath,
+        $json
+    );
+
+    return $this->response->setJSON([
+        'status' => true,
+        'data' => $request,
+        'message' => 'Updated successfully'
+    ]);
+}
 
 }

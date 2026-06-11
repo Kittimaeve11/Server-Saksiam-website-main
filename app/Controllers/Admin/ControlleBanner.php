@@ -18,7 +18,7 @@ class ControlleBanner extends BaseController
     public function showBannerData()
     {
         $activeFilter = $this->request->getGet('active');
-        $type = $this->request->getGet('type');
+        $selectedType = $this->request->getGet('type');
         $limit = $this->request->getVar('limit') ?? 50;
         $offset = $this->request->getVar('offset') ?? 0;
        
@@ -35,13 +35,12 @@ class ControlleBanner extends BaseController
                 ])->setStatusCode(400);
             }
         }
-        if ($type === "" || $type === null) {
-            $type = null;
-        } else {
-            $type = trim($type); // กัน space
+
+        if ($selectedType === 'all' || $selectedType === '' || $selectedType === null) {
+            $selectedType = null;
         }
 
-$banner = $this->Banner->getBanner($type, $offset, $limit, $activeFilter);
+        $banner = $this->Banner->getBanner($selectedType, $offset, $limit, $activeFilter);
 
         if ($banner) {
             return $this->response->setJSON([
@@ -65,19 +64,19 @@ $banner = $this->Banner->getBanner($type, $offset, $limit, $activeFilter);
         $savename = $this->request->getVar('savename');
         
 
-      if (!$picturePC || !$picturePC->isValid()) {
-    return $this->response->setJSON([
-        'status' => false,
-        'message' => 'picturePC invalid'
-    ]);
-}
+        if (!$picturePC || !$picturePC->isValid()) {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'picturePC invalid'
+            ]);
+        }
 
-if (!$pictureMoblie || !$pictureMoblie->isValid()) {
-    return $this->response->setJSON([
-        'status' => false,
-        'message' => 'pictureMoblie invalid'
-    ]);
-}
+        if (!$pictureMoblie || !$pictureMoblie->isValid()) {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'pictureMoblie invalid'
+            ]);
+        }
 
         $allowedTypes = ['jpg', 'jpeg'];
         if (
@@ -435,7 +434,7 @@ if (!$pictureMoblie || !$pictureMoblie->isValid()) {
             return $this->response->setJSON([
                 'status' => true,
                 'message' => 'Data Brander retrieved successfully',
-                'result' => $showData
+                'data' => $showData
             ]);
         } else {
             return $this->response->setJSON(0);

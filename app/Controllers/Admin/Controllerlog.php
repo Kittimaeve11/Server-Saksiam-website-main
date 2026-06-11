@@ -13,7 +13,7 @@ use App\Models\LogActionsModel;
 class Controllerlog extends BaseController
 {
       protected $LogActionsModel;
- public function __construct()
+    public function __construct()
     {
         $this->LogActions = new LogActionsModel();
     }
@@ -81,6 +81,105 @@ class Controllerlog extends BaseController
             ])->setStatusCode(500);
         }
 
+    }
+
+    public function uplogdataWeb()
+    {
+        $jsonData = $this->request->getJSON(true);
+        $actionType = $jsonData['actionType'] ?? null;
+        $actionDetail = $jsonData['actionDetail'] ?? null;
+        $typeUser = $jsonData['typeUser'] ?? null;
+        $datatype = $jsonData['datatype'] ?? null;
+        $dataID = $jsonData['dataID'] ?? null;
+        $datatypeID = $jsonData['datatypeID'] ?? null;
+        $dataname = $jsonData['dataname'] ?? null;
+
+        if (!$actionType || !$actionDetail || !$typeUser || !$datatype ) {
+            return $this->response->setJSON(['error' => 'กรุณากรอกข้อมูลที่จำเป็น'])
+                ->setStatusCode(400);
+        }
+
+        try {
+            $logData = [
+                'int_saksiam_log_ActionType' => $actionType,
+                'int_saksiam_log_ActionDetail' => $actionDetail,
+                'int_saksiam_log_TypeUser' => $typeUser,
+                'int_saksiam_log_datatype' => $datatype,
+                'int_saksiam_log_dataID' => $dataID,
+                'int_saksiam_log_datatypeID' => $datatypeID,
+                'int_saksiam_log_dataname' => $dataname,
+                'int_saksiam_log_IPAddress' => $this->getUserIp(),
+                'int_saksiam_log_Device' => $this->getDeviceFromUserAgent($this->request->getUserAgent()),
+            ];
+            $this->LogActions->insert_data($logData);
+            return $this->response->setJSON([
+                'status' => true,
+                'message' => 'Data inserted successfully',
+            ])->setStatusCode(201);
+        } catch (\Exception $e) {
+            return $this->response->setJSON([
+                'error' => $e->getMessage()
+            ])->setStatusCode(500);
+        }
+
+    }
+
+    public function showLog()
+    {
+        $typeFilter = $this->request->getVar('typeFilter');
+        $searchdetail = $this->request->getVar('searchdetail');
+        $limit = $this->request->getVar('limit') ?? 20;
+        $offset = $this->request->getVar(index: 'offset') ?? 1;
+        $month = $this->request->getVar('month');
+        $year = $this->request->getVar('year');
+        if ($limit == 0) {
+            $limit = 100000;
+        }
+        if (!$typeFilter && !$searchdetail && !$month && !$year) {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'No filter parameters provided.',
+                'result' => []
+            ]);
+        }
+        $showlog = $this->LogActions->search_data($typeFilter, $limit, $offset, $searchdetail, $month, $year);
+
+        if ($showlog) {
+            return $this->response->setJSON([
+                'status' => true,
+                'message' => 'Data logs retrieved successfully',
+                'result' => $showlog
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'No data found.',
+                'result' => []
+            ]);
+        }
+
+
+    }
+
+    public function showLogData()
+    {
+        $typeFilter = $this->request->getVar('typeFilter');
+        $datatype = $this->request->getVar('datatype');
+        $dataID = $this->request->getVar('dataID');
+        $searchdetail = $this->request->getVar('searchdetail');
+        $month = $this->request->getVar('month');
+        $year = $this->request->getVar('year');
+        $limit = (int) ($this->request->getVar('limit') ?? 0);
+        $offset = (int) ($this->request->getVar('offset') ?? 0);
+
+        $logs = $this->LogActions->getLogData($typeFilter, $datatype, $dataID, $searchdetail, $month, $year, $limit, $offset);
+
+        return $this->response->setJSON([
+            'status' => true,
+            'message' => 'Data logs retrieved successfully',
+            'result' => $logs,
+            'data' => $logs,
+        ]);
     }
 
 }

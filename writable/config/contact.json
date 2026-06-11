@@ -1,0 +1,42 @@
+{
+    "company_name": {
+        "th": "บริษัท ศักดิ์สยามลิสซิ่ง จำกัด (มหาชน) ",
+        "en": "Saksiam Leasing Public Company Limited"
+    },
+    "address": {
+        "th": "สำนักงานใหญ่ 49\/47 ถ.เจษฎาบดินทร์ ต.ท่าอิฐ อ.เมืองอุตรดิตถ์ จ.อุตรดิตถ์ 53000",
+        "en": "49\/47 Jetsadabodin Road, Tha It, Mueang Uttaradit, Uttaradit 53000"
+    },
+    "office_hours": {
+        "th": "วันจันทร์ – ศุกร์ เวลา 08:00 – 16:30 น. วันเสาร์อาจเปิดให้บริการ ติดต่อสาขาก่อนเข้ารับบริการ",
+        "en": "Monday – Friday: 08:00 AM – 04:30 PM. Saturday: May be open (please contact the branch first)"
+    },
+    "contact": {
+        "callcenter": "1487",
+        "fax": "055 440 371",
+        "contactpersonal": "1487 ต่อ 886005 886014 886015 ",
+        "email_main": "saksiam@saksiam.co.th",
+        "email_sub": "secretary.s@saksiam.co.th"
+    },
+    "company_info": {
+        "established": "2016-06-20",
+        "branches": "1079",
+        "employees": "2700"
+    },
+    "location": {
+        "lat": "17.6226885",
+        "lng": "100.0870427"
+    },
+    "social": {
+        "facebook": "https:\/\/www.saksiam.com",
+        "line": "https:\/\/lin.ee\/TFHm2Fw",
+        "instagram": "https:\/\/www.instagram.com\/saksiamofficial",
+        "youtube": "https:\/\/bit.ly\/3y7UOl5",
+        "tiktok": "https:\/\/www.tiktok.com\/@saksiamofficial"
+    },
+    "images": {
+        "cover": "\/Contact\/1779783643_124eb475efed00699c1f.jpg",
+        "qr_line": "\/Contact\/Qrcode-Line.png",
+        "regiter": "\/Contact\/1779783832_bda289dc527bb9bf598c.pdf"
+    }
+}

@@ -72,8 +72,8 @@ class BannerModel extends Model
 
         $hasNameChange =
             array_key_exists('int_saksiam_banner_name', $data['data']) ||
-            array_key_exists('int_saksiam_banner_picturePC', $data['data']);
-            array_key_exists('int_saksiam_banner_pictureMoblie', $data['data']);
+            array_key_exists('int_saksiam_banner_picturePC', $data['data'])||
+            array_key_exists('int_saksiam_banner_pictureMoblie', $data['data'])||
             array_key_exists('int_saksiam_banner_link', $data['data']);
 
         $hasUpdateName =
